@@ -19,11 +19,20 @@ public:
 	// Sets default values for this actor's properties
 	ABall();
 
+	int PlayerScore;
+	int EnemyScore;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		UStaticMeshComponent* SM_Ball;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly)
 		UProjectileMovementComponent* ProjectileMovement;
+
+	UPROPERTY(EditAnywhere)
+		float Speed;
+
+	UFUNCTION()
+		void OnCompHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
 protected:
 	// Called when the game starts or when spawned
@@ -34,6 +43,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	
 	void Start();
+
+	float GetY();
 
 	UFUNCTION()
 		UStaticMeshComponent* GetBall();

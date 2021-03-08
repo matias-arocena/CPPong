@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 #include "PaddlePlayerController.h"
 
-#include "Kismet/GameplayStatics.h"
 #include "Camera/CameraActor.h"
+#include "EngineUtils.h"
+#include "Kismet/GameplayStatics.h"
 
 APaddlePlayerController::APaddlePlayerController()
 {
@@ -31,6 +32,12 @@ void APaddlePlayerController::BeginPlay()
 	Paddle = Cast<APlayerPaddle>(GetPawn());
 	
 	SpawnNewBall();
+
+	TArray<AActor*> EnemyActor;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), AEnemyPaddle::StaticClass(), EnemyActor);
+
+	Enemy = Cast<AEnemyPaddle>(EnemyActor[0]);
+	Enemy->SetBall(Ball);
 }
 
 void APaddlePlayerController::Move(float value)

@@ -13,6 +13,14 @@ class CPPONG_API APlayerPaddle : public APawn
 {
 	GENERATED_BODY()
 
+private:
+	float XPos;
+	float ZPos;
+	float Y3Velocity;
+	bool bIsCollidingAbove;
+	bool bIsCollidingBelow;
+
+
 public:
 	// Sets default values for this pawn's properties
 	APlayerPaddle();
@@ -35,4 +43,11 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void Move(float Value);
+
+	UFUNCTION()
+		void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	UFUNCTION()
+		void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
+
 };

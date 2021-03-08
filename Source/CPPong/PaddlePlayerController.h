@@ -4,6 +4,7 @@
 
 #include "Ball.h"
 #include "CoreMinimal.h"
+#include "EnemyPaddle.h"
 #include "GameFramework/PlayerController.h"
 #include "PlayerPaddle.h"
 #include "PaddlePlayerController.generated.h"
@@ -27,6 +28,7 @@ public:
 private:
 	APlayerPaddle* Paddle;
 	ABall* Ball;
+	AEnemyPaddle* Enemy;
 
 protected:
 	virtual void BeginPlay() override;
