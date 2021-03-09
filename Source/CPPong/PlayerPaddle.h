@@ -16,7 +16,7 @@ class CPPONG_API APlayerPaddle : public APawn
 private:
 	float XPos;
 	float ZPos;
-	float Y3Velocity;
+	float YVelocity;
 	bool bIsCollidingAbove;
 	bool bIsCollidingBelow;
 
